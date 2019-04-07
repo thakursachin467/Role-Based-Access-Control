@@ -6,7 +6,7 @@ let Keys;
 if(process.env.ENVIRONMENT ==='PRODUCTION'){
     Keys= process.env
 } else{
-    Keys=  require('./Config/Credintials/keys');
+    Keys=  require('../../Config/Credintials/keys');
 }
 //@ RECEIVES 2 PARAMS NAME OF ROLE AND ARRAY OF PERMISSIONS FOR THAT ROLE
 exports.addRole=async (request,response,next)=>{

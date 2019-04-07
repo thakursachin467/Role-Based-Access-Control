@@ -10,7 +10,7 @@ let Keys;
 if(process.env.ENVIRONMENT ==='PRODUCTION'){
     Keys= process.env
 } else{
-    Keys=  require('./Config/Credintials/keys');
+    Keys=  require('../../Config/Credintials/keys');
 }
 exports.LoginUser= async (request,response,next)=>{
     const user= {

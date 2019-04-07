@@ -8,6 +8,7 @@ const auth= require('./routes/users/Auth');
 const permissions= require('./routes/users/Permissions');
 const role= require('./routes/users/role');
 const Sentry = require('@sentry/node');
+const allRoutes= require('./routes/dummyRoutes/allRoutes');
 const access_rules= require('./Permissions/access_rules');
 let Keys;
 if(process.env.ENVIRONMENT ==='PRODUCTION'){
@@ -43,6 +44,14 @@ mongoose.connect(Keys.dbUrl,{ useNewUrlParser: true })
         Sentry.captureException(err);
         console.log(`connection failed to database ${err}`)
     }));
+
+
+app.get('/',(request,response,next)=>{
+   response.send('Every one can access this route. To know all routes go to /api/allroutes');
+});
+
+
+app.use('/api/allroutes',allRoutes)
 
 //only super admin will be able to define what permission can be set i.e read write etc
 app.use('/api/permissions',access_rules.canAccessRole(['superadmin']),permissions);
