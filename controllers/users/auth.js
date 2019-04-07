@@ -5,7 +5,7 @@ const Sentry= require('@sentry/node');
 const LoginValidation= require('../../Utils/LoginValidation');
 const SignupValidation = require('../../Utils/SignupValidation');
 const User= require('../../models/users/user');
-const Keys= require('../../Config/Credintials/Keys');
+const Keys= require('../../Config/Credintials/Keys') || process.env;
 const roles= require('../../models/users/roles');
 exports.LoginUser= async (request,response,next)=>{
     const user= {

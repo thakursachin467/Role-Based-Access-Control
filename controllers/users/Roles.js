@@ -1,7 +1,7 @@
 const Role= require('../../models/users/roles');
 const action_type= require('../../models/users/action_types');
 const Sentry = require('@sentry/node');
-const Keys= require('../../Config/Credintials/Keys');
+const Keys= require('../../Config/Credintials/Keys') || process.env;
 const _ = require('lodash');
 
 //@ RECEIVES 2 PARAMS NAME OF ROLE AND ARRAY OF PERMISSIONS FOR THAT ROLE

@@ -7,7 +7,7 @@ const PORT= process.env.PORT || 5000;
 const auth= require('./routes/users/Auth');
 const permissions= require('./routes/users/Permissions');
 const role= require('./routes/users/role');
-const Keys= require('./Config/Credintials/keys');
+const Keys= require('./Config/Credintials/keys') || process.env;
 const Sentry = require('@sentry/node');
 const access_rules= require('./Permissions/access_rules');
 
