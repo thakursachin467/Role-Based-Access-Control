@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
-const ObjectId= schema.ObjectId;
+const ObjectId= Schema.ObjectId;
 const Sentry= require('@sentry/node');
-const userRoles = new Schema({
+const userRole = new Schema({
     name:{
         type:String, //eg. Admin, super Admin. etc
         required: true
@@ -19,7 +19,7 @@ const userRoles = new Schema({
     autoIndex: false
 });
 
-const userRoles = mongoose.model('roles', userRoles);
+const userRoles = mongoose.model('roles', userRole);
 
 
 exports.addRole= async (roleData)=>{
@@ -33,8 +33,8 @@ exports.addRole= async (roleData)=>{
     }
 };
 
-exports.getRole=async (filter)=>{
-    const role= await userRoles.findOne(filter).lean().exec();
+exports.getRole=async (filter,populateQuery={})=>{
+    const role= await userRoles.findOne(filter).populate(populateQuery).lean().exec();
     try{
         return role;
     }catch(err){

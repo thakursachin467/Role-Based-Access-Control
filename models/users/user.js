@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 const _ = require('lodash');
-const ObjectId= schema.ObjectId;
+const ObjectId= Schema.ObjectId;
 const Sentry = require('@sentry/node');
 const userProfile = new Schema({
     email:{
@@ -21,10 +21,10 @@ const userProfile = new Schema({
     phone:{
         type: String
     },
-    role: {
+    role: [{
         type: ObjectId,
         ref: 'roles'
-    },
+    }],
 }, {
     timestamps: { createdAt: 'created_on', updatedAt: 'modified_on' },
     autoIndex: false
@@ -33,8 +33,8 @@ const userProfile = new Schema({
 const UserProfiles = mongoose.model('userProfiles', userProfile);
 
 
-UserProfiles.getUser=async (filter)=>{
-    const query= await UserProfiles.findOne(filter).lean().exec();
+UserProfiles.getUser=async (filter,populateQuery={})=>{
+    const query= await UserProfiles.findOne(filter).populate(populateQuery).lean().exec();
     try{
         return query;
     }catch (error) {

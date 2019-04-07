@@ -3,11 +3,16 @@ const app = express();
 const mongoose= require('mongoose');
 const bodyParser = require('body-parser');
 const PORT= process.env.PORT || 5000;
-const auth= require('./routes/user/Auth');
+const auth= require('./routes/users/Auth');
 const Keys= require('./Config/Credintials/keys');
 const Sentry = require('@sentry/node');
+const access_rules= require('./Permissions/access_rules');
 
-app.use((request,response,next)=>{
+
+//basic middleware to check weather the user is logged in or not
+// if logged in attach the user id to request
+ app.use((request,response,next)=>{
+     console.log('here first');
     const authHeader= request.get('Authorization');
     if(authHeader){
         const token= authHeader.split(' ')[1];
@@ -26,16 +31,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-mongoose.connect(`mongodb://admin:admin12@ds159880.mlab.com:59880/scapic`)
+mongoose.connect(Keys.dbUrl,{ useNewUrlParser: true })
     .then(()=>console.log(`connection to database success`))
     .catch(((err)=>{
         Sentry.captureException(err);
         console.log(`connection failed to database ${err}`)
     }));
 
-app.use('/api/auth/',auth);
-app.use('/api/profile/',profile);
-app.use('/api/categories/',category);
+app.use('/api/auth/',access_rules.canAccessRole(['admin']),auth);
+
 
 
 
