@@ -1,0 +1,21 @@
+{
+  "name": "role-base-auth",
+  "version": "1.0.0",
+  "description": "\"A role base auth system in nodejs\"",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sachin Thakur",
+  "license": "ISC",
+  "dependencies": {
+    "@sentry/node": "^5.0.5",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.4.22",
+    "validator": "^10.11.0"
+  }
+}
