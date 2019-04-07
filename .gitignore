@@ -1,4 +1,5 @@
 /node_modules
 /Config/Credintials
+/Config/Credintials/Keys.js
 .idea/
 package-lock.json
