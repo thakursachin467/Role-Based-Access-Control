@@ -4,31 +4,36 @@ const Permissions= require('../../Permissions/access_rules');
 
 router.get('/',(request,response,next)=>{
    const text= `
-    You can create your account with /api/auth/signup with body structure as {
+   <p> You can create your account with /api/auth/signup with body structure as</p>
+   <p> {
 	"email":"email",
 	"password":"password",
 	"rePassword":"password",
 	"firstName":"name"
-}
- a standard role will be automatically assign to you.
- You can login and get the token using /api/auth/login with given body structure
- {
+} </p>
+<p>a standard role will be automatically assign to you.</p> 
+ <p>You can login and get the token using /api/auth/login with given body structure </p>
+<p>
+{
 	"email":"registered email",
 	"password":"password"
-}
-take then token and put it as Authorization. Now you are ready to explore.
+}</p> 
+
+<p>take then token and put it as Authorization. Now you are ready to explore.</p>
+
+<p><b>for testing purpose you can use this token 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Y2E5YmI1YmViZjVkMzk5ZTY2M2UyMWIiLCJlbWFpbCI6InRoYWt1cnNhY2hpbjQ2MjdAZ21haWwuY29tIiwiaWF0IjoxNTU0NjQ5NDY0fQ.5HqoJK6-CWcNC0biwpJ56b427PD9fiP00wvv_3MbOcE'
+</b></p>
 
 
-for testing purpose you can use this token 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Y2E5YmI1YmViZjVkMzk5ZTY2M2UyMWIiLCJlbWFpbCI6InRoYWt1cnNhY2hpbjQ2MjdAZ21haWwuY29tIiwiaWF0IjoxNTU0NjQ5NDY0fQ.5HqoJK6-CWcNC0biwpJ56b427PD9fiP00wvv_3MbOcE'
+<h3>this user has all 4 read,write, update ,delete permissions</h3>
 
-this user has all 4 read,write, update ,delete permissions
 
-Go to /api/allroutes/onlyAdmin. this route will only be accessable by admin
-/api/allroutes/onlyStandard. this route will only be accessed by standard user.
-/api/allroute/onlySuperUser. only accessed by superuser
-/api/allroute/SuperUserAndStandard. anyone from superadmin or standard user can access this route.
-/api/allroute/SuperUserAndAdmin. anyone from superadmin or admin user can access this route.
-/api/allroute/readAndWrite. anyone from read or write permission user can access this route.
+<p>/api/allroutes/onlyAdmin. this route will only be accessable by admin</p>
+<p>/api/allroutes/onlyStandard. this route will only be accessed by standard user.</p>
+<p>/api/allroute/onlySuperUser. only accessed by superuser</p> 
+<p>/api/allroute/SuperUserAndStandard. anyone from superadmin or standard user can access this route.</p>
+<p>/api/allroute/SuperUserAndAdmin. anyone from superadmin or admin user can access this route.</p> 
+<p>/api/allroute/readAndWrite. anyone from read or write permission user can access this route.</p>
    `;
     response.send(text);
 });
