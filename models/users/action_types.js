@@ -17,8 +17,9 @@ const action_types = mongoose.model('action_types', action_type);
 
 
 exports.addAction= async (roleData)=>{
+    console.log('action');
     const saveAction= new action_types(roleData);
-    const action= await  saveAction.save();
+    const action= await saveAction.save();
     try{
         return action;
     }catch (e) {

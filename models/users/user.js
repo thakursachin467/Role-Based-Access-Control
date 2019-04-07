@@ -33,7 +33,7 @@ const userProfile = new Schema({
 const UserProfiles = mongoose.model('userProfiles', userProfile);
 
 
-UserProfiles.getUser=async (filter,populateQuery={})=>{
+UserProfiles.getUser= async (filter,populateQuery={path:'role'})=>{
     const query= await UserProfiles.findOne(filter).populate(populateQuery).lean().exec();
     try{
         return query;

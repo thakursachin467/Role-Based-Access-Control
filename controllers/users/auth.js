@@ -79,6 +79,7 @@ exports.AddUser=async (request,response,next)=>{
         phone: _.toString(_.get(request,'body.phone'))
     };
     const Validation=  SignupValidation(user);
+    console.log(Validation);
     if(!Validation.isValid){
         return  response
             .status(400)
@@ -110,7 +111,8 @@ exports.AddUser=async (request,response,next)=>{
         name:Keys.defaultRole
     };
     const role= await  roles.getRole(roleFilter);
-    user.role= role.id;   //assign the unique id of role here
+    console.log(role);
+    user.role= role._id;   //assign the unique id of role here
     const saveUser= await User.addUser(user);
     try{
         const body= {

@@ -24,7 +24,7 @@ const userRoles = mongoose.model('roles', userRole);
 
 exports.addRole= async (roleData)=>{
   const saveRole= new userRoles(roleData);
-  const role= await  saveRole.save()
+  const role= await  saveRole.save();
     try{
       return role;
     }catch (e) {
@@ -33,7 +33,7 @@ exports.addRole= async (roleData)=>{
     }
 };
 
-exports.getRole=async (filter,populateQuery={})=>{
+exports.getRole=async (filter,populateQuery={path:'action_type'})=>{
     const role= await userRoles.findOne(filter).populate(populateQuery).lean().exec();
     try{
         return role;
@@ -46,7 +46,7 @@ exports.getRole=async (filter,populateQuery={})=>{
 
 
 exports.editRole= async (filter,update,options={})=>{
-    const role =await userRoles.findOneAndUpdate(filter,{$set:update},options).lean().exec();
+    const role =await userRoles.findOneAndUpdate(filter,update,options).lean().exec();
     try{
         return role;
     }catch (e) {
