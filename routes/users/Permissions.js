@@ -25,7 +25,7 @@ const permissions = require('../../controllers/users/Permissions');
  *              properties:
  *                 permission: 
  *                     type: string
-  *                     example: admin
+  *                     example: read
  */
 
 
