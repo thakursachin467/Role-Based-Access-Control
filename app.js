@@ -10,6 +10,7 @@ const role = require('./routes/users/role');
 const Sentry = require('@sentry/node');
 const allRoutes = require('./routes/dummyRoutes/allRoutes');
 const access_rules = require('./Permissions/access_rules');
+const swaggerDoc = require('./swaggerDoc');
 let Keys;
 if (process.env.ENVIRONMENT === 'PRODUCTION') {
     Keys = process.env
@@ -60,6 +61,8 @@ app.use('/api/permissions', access_rules.canAccessRole(['superadmin']), permissi
 app.use('/api/role', access_rules.canAccessPermissions(['read']), role);
 app.use('/api/auth/', auth);
 
+//for api documentation
+swaggerDoc(app);
 
 
 

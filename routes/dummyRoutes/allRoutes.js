@@ -2,6 +2,116 @@ const express = require('express');
 const router = express.Router();
 const Permissions = require('../../Permissions/access_rules');
 
+
+/**
+ * @swagger
+ * /allroutes:
+ *    get:
+ *       description: Lists out all the existing routes and permission schemas
+ *       tags: 
+ *          - "Dummy Testing Routes"
+ *     
+ */
+
+
+/**
+* @swagger
+* /allroutes/onlyAdmin:
+*    get:
+*       description: Only admin will have the rights to access this route
+*       tags: 
+ *          - "Dummy Testing Routes"
+ *       parameters:
+ *         - name: Authorization
+ *           in: header
+ *           description: Bearer token of the logged in user. Authorization token.
+ *           required: true
+ *           type: string
+ *      
+*/
+
+
+
+/**
+* @swagger
+* /allroutes/onlyStandard:
+*    get:
+*       description: Only Standard User will have the rights to access this route. By default all users who signup to application   *        are Standard USERS
+*       tags: 
+*          - "Dummy Testing Routes"
+ *       parameters:
+ *         - name: Authorization
+ *           in: header
+ *           description: Bearer token of the logged in user. Authorization token.
+ *           required: true
+ *           type: string
+*/
+
+
+/**
+* @swagger
+* /allroutes/onlySuperUser:
+*    get:
+*       description: Only SuperUser  will have the rights to access this route.
+*       tags: 
+ *          - "Dummy Testing Routes"
+ *       parameters:
+ *         - name: Authorization
+ *           in: header
+ *           description: Bearer token of the logged in user. Authorization token.
+ *           required: true
+ *           type: string
+*/
+
+
+/**
+* @swagger
+* /allroutes/SuperUserAndStandard:
+*    get:
+*       description: Either SuperUser or Standard User  will have the rights to access this route.
+*       tags: 
+ *          - "Dummy Testing Routes"
+ *       parameters:
+ *         - name: Authorization
+ *           in: header
+ *           description: Bearer token of the logged in user. Authorization token.
+ *           required: true
+ *           type: string
+*
+*/
+
+
+/**
+* @swagger
+* /allroutes/SuperUserAndAdmin:
+*    get:
+*       description: Either Admin or Standard User  will have the rights to access this route
+*       tags: 
+ *          - "Dummy Testing Routes"
+ *       parameters:
+ *         - name: Authorization
+ *           in: header
+ *           description: Bearer token of the logged in user. Authorization token.
+ *           required: true
+ *           type: string
+*/
+
+
+/**
+* @swagger
+* /allroutes/readAndWrite:
+*    get:
+*       description: Either User with  read or write permissions  will have the rights to access this route
+*       tags: 
+ *          - "Dummy Testing Routes"
+ *       parameters:
+ *         - name: Authorization
+ *           in: header
+ *           description: Bearer token of the logged in user. Authorization token.
+ *           required: true
+ *           type: string
+*/
+
 router.get('/', (request, response, next) => {
     const text = `
    <p> You can create your account with /api/auth/signup with body structure as</p>

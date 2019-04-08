@@ -1,0 +1,18 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Role Base Access Control",
+    "version": "1.0.0",
+    "description": "Role Base Access Control"
+  },
+  "basePath": "/",
+  "definations": {
+    "id": {
+      "properties": {
+        "uuid": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

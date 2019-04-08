@@ -1,24 +1,24 @@
 const mongoose = require('mongoose');
-const Schema   = mongoose.Schema;
+const Schema = mongoose.Schema;
 const _ = require('lodash');
-const ObjectId= Schema.ObjectId;
+const ObjectId = Schema.ObjectId;
 const Sentry = require('@sentry/node');
 const userProfile = new Schema({
-    email:{
+    email: {
         type: String
     },
-    name:{
-        firstName:{
-            type:String
+    name: {
+        firstName: {
+            type: String
         },
-        lastName:{
+        lastName: {
             type: String
         }
     },
-    password:{
+    password: {
         type: String
     },
-    phone:{
+    phone: {
         type: String
     },
     role: [{
@@ -26,40 +26,40 @@ const userProfile = new Schema({
         ref: 'roles'
     }],
 }, {
-    timestamps: { createdAt: 'created_on', updatedAt: 'modified_on' },
-    autoIndex: false
-});
+        timestamps: { createdAt: 'created_on', updatedAt: 'modified_on' },
+        autoIndex: false
+    });
 
 const UserProfiles = mongoose.model('userProfiles', userProfile);
 
 
-UserProfiles.getUser= async (filter,populateQuery={path:'role'})=>{
-    const query= await UserProfiles.findOne(filter).populate(populateQuery).lean().exec();
-    try{
+UserProfiles.getUser = async (filter, populateQuery = { path: 'role' }) => {
+    const query = await UserProfiles.findOne(filter).populate(populateQuery).lean().exec();
+    try {
         return query;
-    }catch (error) {
+    } catch (error) {
         Sentry.captureException(error);
         return error;
     }
 
 };
 
-UserProfiles.getUsers=async ({filter={},limit,skip})=>{
-    const query =await  UserProfiles.find(filter).lean().skip(skip).limit(limit).exec();
-    try{
+UserProfiles.getUsers = async ({ filter = {}, limit, skip }) => {
+    const query = await UserProfiles.find(filter).lean().skip(skip).limit(limit).exec();
+    try {
         return query;
-    }catch (error) {
+    } catch (error) {
         Sentry.captureException(error);
         return error;
     }
 };
 
-UserProfiles.addUser=async (params)=>{
-    const user= new UserProfiles(params);
-    const result= await user.save();
-    try{
+UserProfiles.addUser = async (params) => {
+    const user = new UserProfiles(params);
+    const result = await user.save();
+    try {
         return result;
-    }catch (error) {
+    } catch (error) {
         Sentry.captureException(error);
         return error;
     }
@@ -67,14 +67,16 @@ UserProfiles.addUser=async (params)=>{
 };
 
 
-UserProfiles.editUser = async  (filter,update,options={})=>{
-    const query =await UserProfiles.findOneAndUpdate(filter,{$set:update},options).lean().exec();
-    try{
-        if(!_.isUndefined(query)) {
+UserProfiles.editUser = async (filter, update, options = {}) => {
+    console.log(filter, update, options);
+    const query = await UserProfiles.findOneAndUpdate(filter, update, options).lean().exec();
+    console.log(query);
+    try {
+        if (!_.isUndefined(query)) {
             return query;
         }
 
-    }catch (error) {
+    } catch (error) {
         Sentry.captureException(error);
         return error;
     }
@@ -83,4 +85,4 @@ UserProfiles.editUser = async  (filter,update,options={})=>{
 
 
 
-module.exports= UserProfiles;
+module.exports = UserProfiles;

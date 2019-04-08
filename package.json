@@ -18,6 +18,9 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.11",
     "mongoose": "^5.4.22",
+    "swagger-jsdoc": "^3.2.8",
+    "swagger-ui": "^3.22.0",
+    "swagger-ui-express": "^4.0.2",
     "validator": "^10.11.0"
   },
   "devDependencies": {
