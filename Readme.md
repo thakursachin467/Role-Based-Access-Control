@@ -30,5 +30,7 @@ You can also customize it such that user with certain level of access i.e read a
 
 In the above example only the users who have read access will be able to access the above route. No other user can access this route.
 
+For all api routes go to (https://role-base-access-control.herokuapp.com/api-docs/)
+
 The database model for this dummy api is ![Here](https://user-images.githubusercontent.com/23305890/55716309-48477880-5a14-11e9-8ded-bb9385863fc5.png)
 
