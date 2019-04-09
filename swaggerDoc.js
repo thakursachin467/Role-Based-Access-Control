@@ -11,9 +11,10 @@ const options = {
       description: "Role Base Access Control"
     },
     basePath: '/api',
+    host: "https://role-base-access-control.herokuapp.com"
 
   },
-  apis: ['./routes/users/Auth.js', './routes/users/Permissions.js', './routes/users/role.js', './routes/dummyRoutes/allRoutes.js']
+  apis: ['./routes/users/Auth.js', './routes/users/Permissions.js', './routes/users/role.js', './routes/dummyRoutes/allRoutes.js', './swagger.js']
 }
 
 const specs = swaggerDoc(options);
