@@ -21,7 +21,7 @@
     "swagger-jsdoc": "^3.2.8",
     "swagger-ui": "^3.23.11",
     "swagger-ui-express": "^4.0.2",
-    "validator": "^10.11.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.10"
